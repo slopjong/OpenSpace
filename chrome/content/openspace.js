@@ -8,7 +8,7 @@ var OpenSpace = {
   onLoad: function() {
     // initialization code
     this.initialized = true;
-    setTimeout("OpenSpace.timer()", 2000);
+    setTimeout("OpenSpace.timer()", 500);
   },
 
   onClick: function() {
@@ -17,9 +17,15 @@ var OpenSpace = {
   
   timer: function(){
 
-	  jQuery("#my-panel").css("background-image","url('chrome://inspector/skin/btnSelecting-act.gif')");
-	//alert('test');
-	//setTimeout("OpenSpace.alert()", 2000);
+	  jQuery.getJSON("http://www.hackerspace.lu/od/", function(data){
+
+		  if(data.open == true)
+			jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/green.png");
+		  else
+			jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/red.png");
+		});
+		
+	setTimeout("OpenSpace.timer()", 60000);
   }
 };
 

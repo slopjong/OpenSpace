@@ -7,8 +7,11 @@
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	
 	<script src="openspace.js"/>
-	 
+	
 	<statusbar id="status-bar">
-		<statusbarpanel id="my-panel" onclick="OpenSpace.onClick(event);" />
+		<statusbarpanel id="my-panel" hidden="false">
+			<image id="openspace-status-image" />
+		</statusbarpanel>
 	</statusbar>
+	
 </overlay>

@@ -1,7 +1,5 @@
-/*statusbarpanel#my-panel{
-	background-color: red;
-}*/
-#my-panel{
-	/*background-color: red;*/
-	background-image: url("chrome://inspector/skin/btnSelecting.gif");
+#openspace-status-image{
+	width: 14px;
+	height: 14px;
+	margin-right: 5px;
 }
