@@ -5,7 +5,10 @@
 
 <overlay id="sample" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
- <statusbar id="status-bar">
-  <statusbarpanel id="my-panel" label="Hello, World"  />
- </statusbar>
+	
+	<script src="openspace.js"/>
+	 
+	<statusbar id="status-bar">
+		<statusbarpanel id="my-panel" label="Hello, World" onclick="OpenSpace.onClick(event);"  />
+	</statusbar>
 </overlay>
