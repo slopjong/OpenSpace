@@ -12,20 +12,31 @@ var OpenSpace = {
   },
 
   onClick: function() {
-    //window.open("chrome://openspace/content/window.xul", "", "width=400,height=200,chrome");
+    window.open("chrome://openspace/content/window.xul", "", "width=400,height=200,chrome");
   },
   
   timer: function(){
-
-	  jQuery.getJSON("http://www.hackerspace.lu/od/", function(data){
-
-		  if(data.open == true)
-			jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/green.png");
-		  else
-			jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/red.png");
-		});
+	var myspace = 1;
+	  jQuery.getJSON(OpenSpace.spaces[myspace].url, OpenSpace.spaces[myspace].handler);
 		
 	setTimeout("OpenSpace.timer()", 60000);
+  },
+  
+  spaces: [
+		// syn2cat
+		{
+			url: "http://www.hackerspace.lu/od/",
+			handler: function(data){
+				OpenSpace.setStatus(data.open);
+			}
+		}
+	],
+  
+  setStatus: function(status){
+	  if(status == true)
+		jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/green.png");
+	  else
+		jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/red.png");
   }
 };
 

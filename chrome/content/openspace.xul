@@ -9,7 +9,7 @@
 	<script src="openspace.js"/>
 	
 	<statusbar id="status-bar">
-		<statusbarpanel id="my-panel" hidden="false">
+		<statusbarpanel id="my-panel" hidden="false" onclick="OpenSpace.onClick(event);">
 			<image id="openspace-status-image" />
 		</statusbarpanel>
 	</statusbar>
