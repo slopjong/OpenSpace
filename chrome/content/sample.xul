@@ -9,6 +9,6 @@
 	<script src="openspace.js"/>
 	 
 	<statusbar id="status-bar">
-		<statusbarpanel id="my-panel" label="Hello, World" onclick="OpenSpace.onClick(event);"  />
+		<statusbarpanel id="my-panel" label="Hello, World"/>
 	</statusbar>
 </overlay>
