@@ -2,5 +2,6 @@
 	background-color: red;
 }*/
 #my-panel{
-	background-color: red;
+	/*background-color: red;*/
+	background-image: url("chrome://inspector/skin/btnSelecting.gif");
 }
