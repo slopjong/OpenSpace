@@ -37,6 +37,18 @@ var OpenSpace = {
 				
 			}
 		},
+		//shackspace
+		{
+			url: "http://shackspace.de/sopen/text/en",
+			type: "text",
+			handler: function(data){
+				if(data == "open")
+					OpenSpace.setStatus(true);
+				else
+					OpenSpace.setStatus(false);
+				
+			}
+		},
 		// syn2cat
 		{
 			url: "http://www.hackerspace.lu/od/",
