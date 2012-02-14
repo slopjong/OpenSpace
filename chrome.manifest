@@ -1,2 +1,8 @@
 content openspace chrome/content/
+## doesn't work
+#skin openspace chrome/skin/
+
 overlay chrome://browser/content/browser.xul chrome://openspace/content/sample.xul
+
+## doesn't work
+#style	chrome://browser/content/browser.xul	chrome://openspace/skin/openspace.css
