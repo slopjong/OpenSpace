@@ -1,3 +1,9 @@
+var jsLoader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].
+                getService(Components.interfaces.mozIJSSubScriptLoader);
+
+jsLoader.loadSubScript("chrome://openspace/content/jquery-1.7.1.min.js");
+jQuery.noConflict();
+
 var OpenSpace = {
   onLoad: function() {
     // initialization code
@@ -10,8 +16,8 @@ var OpenSpace = {
   },
   
   timer: function(){
-	  var panel = document.getElementById("my-panel");
-	  panel.setAttribute("style", "background-image: url('chrome://inspector/skin/btnSelecting-act.gif')");
+
+	  jQuery("#my-panel").css("background-image","url('chrome://inspector/skin/btnSelecting-act.gif')");
 	//alert('test');
 	//setTimeout("OpenSpace.alert()", 2000);
   }
