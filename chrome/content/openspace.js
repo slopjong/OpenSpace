@@ -17,15 +17,30 @@ var OpenSpace = {
   
   timer: function(){
 	var myspace = 1;
-	  jQuery.getJSON(OpenSpace.spaces[myspace].url, OpenSpace.spaces[myspace].handler);
+	jQuery.get(OpenSpace.spaces[myspace].url, OpenSpace.spaces[myspace].handler, OpenSpace.spaces[myspace].type);
 		
 	setTimeout("OpenSpace.timer()", 60000);
   },
   
   spaces: [
+		// raumzeitlabor
+		{
+			url: "http://status.raumzeitlabor.de/",
+			type: "html",
+			handler: function(data){
+				
+				var match = data.match(/green.png/g);
+				if(match == "green.png")
+					OpenSpace.setStatus(true);
+				else
+					OpenSpace.setStatus(false);
+				
+			}
+		},
 		// syn2cat
 		{
 			url: "http://www.hackerspace.lu/od/",
+			type: "json",
 			handler: function(data){
 				OpenSpace.setStatus(data.open);
 			}
