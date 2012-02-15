@@ -13,13 +13,21 @@ var OpenSpace = {
 	var myspace = prefManager.getIntPref("myspace");
 	// in seconds
 	var refresh_interval = prefManager.getIntPref("refresh_interval");
+
+	/*
+	Components.classes[ "@mozilla.org/consoleservice;1" ]
+			.getService( Components.interfaces[ "nsIConsoleService" ] )
+			.logStringMessage(OpenSpace.spaces[myspace]);
+	*/
+	  
+	//alert(OpenSpace.spaces[myspace].name);
 	  
 	jQuery.get(OpenSpace.spaces[myspace].url, OpenSpace.spaces[myspace].handler, OpenSpace.spaces[myspace].type)
 		.error(function(){ 
 			jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/grey.png");
 		});
 
-	setTimeout("OpenSpace.timer()", refresh_interval * 1000);
+	setTimeout("OpenSpace.timer()", 8000);//		refresh_interval * 1000);
   },
 
   spaces: [
@@ -167,11 +175,12 @@ var OpenSpace = {
 			url: "http://shackspace.de/sopen/text/en",
 			type: "text",
 			handler: function(data){
-				if(data == "open")
+				
+				var match = data.match(/open/g);
+				if(match == "open")
 					OpenSpace.setStatus(true);
 				else
-					OpenSpace.setStatus(false);
-				
+					OpenSpace.setStatus(false);				
 			}
 		},
 		{
@@ -217,6 +226,19 @@ var OpenSpace = {
 	],
   
   setStatus: function(status){
+	  
+	  if(typeof status == "undefined") {
+		jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/grey.png");
+		return;
+	  }
+	  
+	if(typeof status == "string") {
+		if(status == "true")
+			status = true;
+		else
+			status = false;
+	}
+	  
 	  if(status == true)
 		jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/green.png");
 	  else
