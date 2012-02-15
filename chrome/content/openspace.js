@@ -87,7 +87,7 @@ var OpenSpace = {
 			handler: function(data){
 				OpenSpace.setStatus(data.open);
 			}
-		},
+		},/*
 		{
 			name: "Maschinenraum",
 			url: "http://twitter.com/statuses/user_timeline.json?screen_name=mr_door_status&count=1&callback=?",
@@ -107,7 +107,7 @@ var OpenSpace = {
 				// output the result
 				//$("#tweet").html(tweet);
 			}
-		},    
+		},*/ 
 		{
 			name: "Milwaukee Makerspace",
 			url: "http://apps.2xlnetworks.net/milwaukeemakerspace/",

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#if [ -d /tmp/openspace ]; then
+#  rm -rf /tmp/openspace
+#fi
+
+#mkdir -p /tmp/openspace
+#cp -R ./* /tmp/openspace
+
+rm openspace@slopjong.de.xpi*
+zip -r openspace@slopjong.de.xpi chrome chrome.manifest defaults install.rdf
