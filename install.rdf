@@ -23,7 +23,7 @@
    
     <!-- Front End MetaData -->
     <em:name>OpenSpace</em:name>
-    <em:description>Shows if the hackerspace is open</em:description>
+    <em:description>Displays the space status to let a hackerspace's members know if it's open.</em:description>
     <em:creator>Slopjong</em:creator>
     <em:homepageURL>http://slopjong.de/</em:homepageURL>
   </Description>      
