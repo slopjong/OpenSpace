@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<dialog id="prefs" title="Your hackerspace"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	buttons="accept"
+	buttonlabelaccept="Ok"
+	onload="openspace_init()"
+	>
+	<script type="application/x-javascript" src="openspace-prefs.js"/>
+	<vbox>
+		<listbox id="spaces-list" onselect="openspace_save_myspace(this.selectedIndex);">
+			<listitem label="ACKspace" />
+			<listitem label="Bitlair" />
+			<listitem label="Fabelier" />
+			<listitem label="Frack" />
+			<listitem label="HeatSync Labs" />
+			<listitem label="Hickerspace" />
+			<listitem label="Kwartzlab MakerSpace" />
+			<listitem label="Makers Local 256" />
+			<listitem label="Milwaukee Makerspace" />
+			<listitem label="MidsouthMakers" />
+			<listitem label="Noisebridge" />
+			<listitem label="Pumping Station: One" />
+			<listitem label="RaumZeitLabor" />
+			<listitem label="RevSpace" />
+			<listitem label="Shackspace" />
+			<listitem label="syn2cat" />
+			<listitem label="tetalab" />
+			<listitem label="TkkrLab" />
+			<listitem label="TOG" />
+			<listitem label="Void Warranties" />
+		</listbox>
+		<label control="refresh-interval" value="Refresh every what seconds?"/>  
+		<textbox id="refresh-interval" value="2" type="number" min="2" onchange="openspace_save_refresh_interval(this.value);" />
+	</vbox>
+</dialog>

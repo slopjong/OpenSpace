@@ -5,25 +5,21 @@ jsLoader.loadSubScript("chrome://openspace/content/jquery-1.7.1.min.js");
 jQuery.noConflict();
 
 var OpenSpace = {
-  onLoad: function() {
-    // initialization code
-    this.initialized = true;
-    setTimeout("OpenSpace.timer()", 1);
-  },
-
-  onClick: function() {
-    window.open("chrome://openspace/content/window.xul", "", "width=400,height=200,chrome");
-  },
   
   timer: function(){
-	var myspace = 0;
+	
+	var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
+				.getService(Components.interfaces.nsIPrefService).getBranch( "extensions.openspace." );
+	var myspace = prefManager.getIntPref("myspace");
+	// in seconds
+	var refresh_interval = prefManager.getIntPref("refresh_interval");
 	  
 	jQuery.get(OpenSpace.spaces[myspace].url, OpenSpace.spaces[myspace].handler, OpenSpace.spaces[myspace].type)
 		.error(function(){ 
 			jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/grey.png");
 		});
-		
-	setTimeout("OpenSpace.timer()", 60000);
+
+	setTimeout("OpenSpace.timer()", refresh_interval * 1000);
   },
 
   spaces: [
@@ -235,4 +231,5 @@ jQuery("#openspace-status-image").click(function(event){
 	alert("test");
 });
 //*/
-window.addEventListener("load", function(e) { OpenSpace.onLoad(e); }, false); 
+
+window.addEventListener("load", function(e) { setTimeout("OpenSpace.timer()", 1); }, false); 

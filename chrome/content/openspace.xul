@@ -6,10 +6,11 @@
 <overlay id="sample" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	
-	<script src="openspace.js"/>
-	
+	<script type="application/x-javascript" src="openspace.js"/>
+
 	<statusbar id="status-bar">
-		<statusbarpanel id="my-panel" hidden="false" onclick="OpenSpace.onClick(event);">
+		<statusbarpanel id="openspace-panel" hidden="false" onclick='window.openDialog("chrome://openspace/content/prefs.xul", "",
+																	"chrome, dialog, resizable=no");'>
 			<image id="openspace-status-image" />
 		</statusbarpanel>
 	</statusbar>
