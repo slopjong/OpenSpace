@@ -1,6 +1,30 @@
-var EXPORTED_SYMBOLS = ["directory"];
+var EXPORTED_SYMBOLS = ["directory","registerOpenSpaceObserver","unregisterOpenSpaceObserver"];
 
 var directory;
+var observers = [];
+
+function registerOpenSpaceObserver(observer){
+    observers.push(observer);
+    //Components.utils.reportError(observers.length);
+};
+
+// Borrowed from http://ejohn.org/blog/javascript-array-remove/
+// By John Resig (MIT Licensed)
+Array.remove = function(array, from, to) {
+  var rest = array.slice((to || from) + 1 || array.length);
+  array.length = from < 0 ? array.length + from : from;
+  return array.push.apply(array, rest);
+};
+
+function unregisterOpenSpaceObserver(observer){
+    var i;
+    for(i=0; i<observers.length; i++){
+        if(observers[i] === observer) break;
+    }
+    Components.utils.reportError(observers.length);
+    Array.remove(observers,i);
+    Components.utils.reportError(observers.length);
+};
 
 function sortObject(object) {
     
@@ -29,8 +53,9 @@ function sortObject(object) {
     }
     
     return sorted;
-}
-    
+};
+ 
+// load the space directory   
 try{
     var req = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
                         .createInstance(Components.interfaces.nsIXMLHttpRequest);
@@ -46,15 +71,39 @@ try{
 }
 
 
+function pollSpace(){
+      
+      
+      //var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
+      //                        .getService(Components.interfaces.nsIPrefService).getBranch( "extensions.openspace." );
+      //var myspace = prefManager.getIntPref("myspace");
+      //// in seconds
+      //var refresh_interval = prefManager.getIntPref("refresh_interval");
+            
+      //Components.classes[ "@mozilla.org/consoleservice;1" ]
+      //                .getService( Components.interfaces[ "nsIConsoleService" ] )
+      //                .logStringMessage(OpenSpace.spaces[myspace]);
 
-//$.getJSON("http://openspace.slopjong.de/directory.json", function(directory){
-    // we must use the global variable here instead of this
-    // because this is bound to the jQuery object
-    //spacelist = directory;
-    /*    
-    directory = openspace.sortObject(directory);
-    $.each(directory, function(space, url){
-        listbox.appendItem(space);
-    });
-    */
-//});
+      
+    //let consoleService = Components.classes["@mozilla.org/consoleservice;1"].
+    //            getService(Components.interfaces.nsIConsoleService);
+    //consoleService.logStringMessage(aMsg);
+        
+      //alert(OpenSpace.spaces[myspace].name);
+      Components.utils.reportError("polling");
+    
+      //setTimeout("pollSpace()", 1000);
+}
+
+// setup the timer and its handler
+var event = {
+  observe: function(subject, topic, data) {  
+    Components.utils.reportError("polling");
+    timer.delay = timer.delay+1000;
+  }  
+}
+
+var timer = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);  
+const TYPE_REPEATING_SLACK = Components.interfaces.nsITimer.TYPE_REPEATING_SLACK;  
+  
+timer.init(event, 1000, TYPE_REPEATING_SLACK);

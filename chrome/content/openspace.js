@@ -4,8 +4,13 @@ var openspace = {
 
         // load our javascript module
         //Components.utils.import("chrome://openspace/content/openspace.jsm");
-        Components.utils.import("resource://openspace/openspace.jsm");
-                
+        try{        
+            Components.utils.import("resource://openspace/openspace.jsm");
+        }catch(e){
+            Components.utils.reportError("The module 'openspace.jsm' could not be loaded "+e);
+            return;
+        }
+        
         // load jQuery
         var jsLoader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].
                 getService(Components.interfaces.mozIJSSubScriptLoader);
@@ -22,6 +27,8 @@ var openspace = {
         
         //setTimeout("OpenSpace.timer()", 1);
         
+        registerOpenSpaceObserver(this);
+
         this.initialized = true;
     },
     
