@@ -4,3 +4,5 @@ skin openspace classic/1.0 chrome/skin/
 
 overlay chrome://browser/content/browser.xul chrome://openspace/content/openspace.xul
 #style	chrome://browser/content/browser.xul	chrome://openspace/skin/openspace.css
+
+resource openspace modules/

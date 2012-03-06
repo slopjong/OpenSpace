@@ -1,18 +1,28 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-
 <?xml-stylesheet href="chrome://openspace/skin/openspace.css" type="text/css"?>
 
-<overlay id="sample" 
+<overlay id="openspace" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	
-	<script type="application/x-javascript" src="openspace.js"/>
+    <script type="application/x-javascript" src="openspace.js"/>
 
-	<statusbar id="status-bar">
-		<statusbarpanel id="openspace-panel" hidden="false" onclick='window.openDialog("chrome://openspace/content/prefs.xul", "",
-																	"chrome, dialog, resizable=no");'>
-			<image id="openspace-status-image" />
-		</statusbarpanel>
-	</statusbar>
-	
+    <statusbar id="status-bar">
+        
+        <panel id="thepanel">
+            <vbox>
+		<label control="spaces-list" value="Choose your hackerspace"/>
+                <listbox id="spaces-list">
+                </listbox>
+                
+                <label control="refresh-interval" value="Refresh every what seconds?"/>  
+                <textbox id="refresh-interval" value="2" type="number" min="2" />
+            </vbox>
+	</panel>
+
+        <statusbarpanel id="openspace-panel" hidden="false" popup="thepanel">
+            <image id="openspace-status-image" />
+        </statusbarpanel>
+            
+    </statusbar>	
 </overlay>

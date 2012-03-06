@@ -1,5 +1,9 @@
 #openspace-status-image{
-	width: 14px;
-	height: 14px;
+	width: 16px;
+	height: 16px;
 	margin-right: 5px;
+}
+
+#thepanel, #spaces-list {
+	background-color: #ff0000;
 }
