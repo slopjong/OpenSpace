@@ -1,30 +1,62 @@
+/**
+ * This module is the core of the OpenSpace add-on and loads the space JSON in the
+ * user's defined (or default) time interval. It checks the member 'open' and
+ * sets the status of the registered observers by calling their 'setStatus(status)'
+ * method.
+ */
+
+/**
+ * The symbols made public to the scope this module is loaded to.
+ * TODO: 'directory' should be renamed to openSpaceDirectory to avoid name conflicts.
+ */
 var EXPORTED_SYMBOLS = ["directory","registerOpenSpaceObserver","unregisterOpenSpaceObserver"];
 
+/**
+ * The directory of known hackerspaces which will be loaded
+ * from http://openspace.slopjong.de
+ */
 var directory;
+
+/**
+ * The observers that are listening to the status 
+ */
 var observers = [];
 
+/**
+ * Register an observer listening to the space status.
+ */
 function registerOpenSpaceObserver(observer){
     observers.push(observer);
 };
 
 // Borrowed from http://ejohn.org/blog/javascript-array-remove/
 // By John Resig (MIT Licensed)
+/**
+ * Removes an element completely from an array. Deleting an element leads
+ * to a hole in the array with the type 'undefined'.
+ */
 Array.remove = function(array, from, to) {
   var rest = array.slice((to || from) + 1 || array.length);
   array.length = from < 0 ? array.length + from : from;
   return array.push.apply(array, rest);
 };
 
+/**
+ * Unregister a window (e.g. because it's closing)
+ */
 function unregisterOpenSpaceObserver(observer){
     var i;
     for(i=0; i<observers.length; i++){
         if(observers[i] === observer) break;
     }
-    Components.utils.reportError(observers.length);
+    //Components.utils.reportError(observers.length);
     Array.remove(observers,i);
-    Components.utils.reportError(observers.length);
+    //Components.utils.reportError(observers.length);
 };
 
+/**
+ * Sorts an object alphabetically.
+ */
 function sortObject(object) {
     
     var sorted = {},
@@ -69,6 +101,11 @@ try{
     Components.utils.reportError("Could not load the space directory");
 }
 
+/**
+ * Notifies all the observers of the current space status.
+ * TODO: only set the status if it changed somewhat. It doesn't make sense
+ *       to set it all time if nothing changed.
+ */
 function notifyObservers(response){
     for(i=0; i<observers.length; i++)
         observers[i].setStatus(response);
@@ -81,6 +118,7 @@ var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 // setup the timer and its handler
 var event = {
   observe: function(subject, topic, data) {
+    
     try{
         req.open("GET", directory[prefs.getCharPref("myspace")], false);
         req.send(null);
@@ -98,7 +136,7 @@ var event = {
   }  
 }
 
+// initialize the timer
 var timer = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);  
 const TYPE_REPEATING_SLACK = Components.interfaces.nsITimer.TYPE_REPEATING_SLACK;  
-  
 timer.init(event, 100, TYPE_REPEATING_SLACK);

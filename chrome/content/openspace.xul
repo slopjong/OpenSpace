@@ -9,14 +9,14 @@
 
     <statusbar id="status-bar">
         
-        <panel id="thepanel">
+        <panel id="thepanel" onpopupshowing="openspace.initPanel();">
             <vbox>
 		<label control="spaces-list" value="Choose your hackerspace"/>
                 <listbox id="spaces-list">
                 </listbox>
                 
                 <label control="refresh-interval" value="Refresh every what seconds?"/>  
-                <textbox id="refresh-interval" value="2" type="number" min="2" />
+                <textbox id="refresh-interval" value="2" type="number" onchange="openspace.saveRefreshInterval();" min="2" />
             </vbox>
 	</panel>
 
