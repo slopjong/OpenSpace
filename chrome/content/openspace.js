@@ -1,11 +1,10 @@
 
-// TODO: when to unregister this window?
-
 var openspace = {
   
     /**
      * Loads some modules and populates the listbox with spaces known
-     * in the space directory.
+     * in the space directory. After the initialization this object
+     * is registered as an observer in the OpenSpace javascript module.
      */
     onLoad: function() {
 
@@ -43,6 +42,13 @@ var openspace = {
                 
         registerOpenSpaceObserver(this);
         this.initialized = true;
+    },
+    
+    /**
+     * Unregisters this object as an observer in the OpenSpace javascript module.
+     */
+    onUnLoad: function(){
+        unregisterOpenSpaceObserver(this);
     },
     
     /**
@@ -148,3 +154,4 @@ var openspace = {
 };
 
 window.addEventListener("load", function(e) { openspace.onLoad(e); }, false);
+window.addEventListener("unload", function(e){ openspace.onUnLoad(e); }, false);
