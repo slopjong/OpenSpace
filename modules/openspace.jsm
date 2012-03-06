@@ -5,7 +5,6 @@ var observers = [];
 
 function registerOpenSpaceObserver(observer){
     observers.push(observer);
-    //Components.utils.reportError(observers.length);
 };
 
 // Borrowed from http://ejohn.org/blog/javascript-array-remove/
@@ -55,11 +54,11 @@ function sortObject(object) {
     return sorted;
 };
  
+var req = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
+    .createInstance(Components.interfaces.nsIXMLHttpRequest);
+                        
 // load the space directory   
 try{
-    var req = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
-                        .createInstance(Components.interfaces.nsIXMLHttpRequest);
-
     req.open("GET", "http://openspace.slopjong.de/directory.json", false);
     req.send(null);
     
@@ -70,40 +69,36 @@ try{
     Components.utils.reportError("Could not load the space directory");
 }
 
-
-function pollSpace(){
-      
-      
-      //var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
-      //                        .getService(Components.interfaces.nsIPrefService).getBranch( "extensions.openspace." );
-      //var myspace = prefManager.getIntPref("myspace");
-      //// in seconds
-      //var refresh_interval = prefManager.getIntPref("refresh_interval");
-            
-      //Components.classes[ "@mozilla.org/consoleservice;1" ]
-      //                .getService( Components.interfaces[ "nsIConsoleService" ] )
-      //                .logStringMessage(OpenSpace.spaces[myspace]);
-
-      
-    //let consoleService = Components.classes["@mozilla.org/consoleservice;1"].
-    //            getService(Components.interfaces.nsIConsoleService);
-    //consoleService.logStringMessage(aMsg);
-        
-      //alert(OpenSpace.spaces[myspace].name);
-      Components.utils.reportError("polling");
-    
-      //setTimeout("pollSpace()", 1000);
+function notifyObservers(response){
+    for(i=0; i<observers.length; i++)
+        observers[i].setStatus(response);
 }
+
+// openspace's preferences
+var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+    .getService(Components.interfaces.nsIPrefService).getBranch( "extensions.openspace." );
 
 // setup the timer and its handler
 var event = {
-  observe: function(subject, topic, data) {  
-    Components.utils.reportError("polling");
-    timer.delay = timer.delay+1000;
+  observe: function(subject, topic, data) {
+    try{
+        req.open("GET", directory[prefs.getCharPref("myspace")], false);
+        req.send(null);
+    
+        spacejson = JSON.parse(req.responseText);
+        notifyObservers(spacejson.open);
+    }catch(e){
+        notifyObservers(undefined);
+    }
+    
+    // TODO: better to reset the timer delay if the preferences have changed instead
+    //       of setting it all time. there should be something like a preferences observer
+    // set the timer delay to what the user wishes to be
+    timer.delay = 1000 * prefs.getIntPref("refresh_interval");
   }  
 }
 
 var timer = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);  
 const TYPE_REPEATING_SLACK = Components.interfaces.nsITimer.TYPE_REPEATING_SLACK;  
   
-timer.init(event, 1000, TYPE_REPEATING_SLACK);
+timer.init(event, 100, TYPE_REPEATING_SLACK);

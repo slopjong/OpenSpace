@@ -16,49 +16,23 @@ var openspace = {
                 getService(Components.interfaces.mozIJSSubScriptLoader);
 
         jsLoader.loadSubScript("resource://openspace/jquery-1.7.1.min.js");
-
+        jQuery.noConflict();
+        
         // populate the listbox with known supported hackerspaces
         var listbox = document.getElementById("spaces-list");     
 
         //directory = openspace.sortObject(directory);
-        $.each(directory, function(space, url){
+        jQuery.each(directory, function(space, url){
             listbox.appendItem(space);
         });
-        
-        //setTimeout("OpenSpace.timer()", 1);
         
         registerOpenSpaceObserver(this);
 
         this.initialized = true;
     },
     
-    /*
-    timer: function(){
-          
-          var prefManager = Components.classes["@mozilla.org/preferences-service;1"]
-                                  .getService(Components.interfaces.nsIPrefService).getBranch( "extensions.openspace." );
-          var myspace = prefManager.getIntPref("myspace");
-          // in seconds
-          var refresh_interval = prefManager.getIntPref("refresh_interval");
-    
-          
-          //Components.classes[ "@mozilla.org/consoleservice;1" ]
-          //                .getService( Components.interfaces[ "nsIConsoleService" ] )
-          //                .logStringMessage(OpenSpace.spaces[myspace]);
-          
-            
-          //alert(OpenSpace.spaces[myspace].name);
-            
-          jQuery.get(OpenSpace.spaces[myspace].url, OpenSpace.spaces[myspace].handler, OpenSpace.spaces[myspace].type)
-                  .error(function(){ 
-                          jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/grey.png");
-                  });
-    
-          setTimeout("OpenSpace.timer()", refresh_interval * 1000);
-    },
-    */
     setStatus: function(status){
-            
+
             if(typeof status == "undefined") {
                   jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/grey.png");
                   return;
@@ -75,6 +49,7 @@ var openspace = {
                   jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/green.png");
             else
                   jQuery("#openspace-status-image").attr("src","chrome://openspace/skin/red.png");
+
     }
 };
 
