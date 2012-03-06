@@ -4,6 +4,34 @@
 	margin-right: 5px;
 }
 
-#thepanel, #spaces-list {
-	background-color: #ff0000;
+#spaces-list {
+	-moz-appearance: none;
+	background-color: #eeeeee;
+	border:1px #888888 solid;
+	color:#444444;
+/*
+scrollbar-face-color: #FF8450;
+scrollbar-shadow-color: #000000;
+scrollbar-highlight-color: #666699;
+scrollbar-3dlight-color: #FBF5C3;
+scrollbar-darkshadow-color: #7F7F7F;
+scrollbar-track-color: #FFD2C3;
+scrollbar-arrow-color: #FFFFFF;
+*/
+/*
+-ms-scrollbar-arrow-color: #ff0000;
+*/
+}
+
+#refresh-interval {
+	-moz-appearance: none;
+	/*
+	background-color: #eeeeee;
+	border-top:50px #888888 solid;	
+	border-top-style: solid;
+	*/
+	/*outline: none;*/
+	/*border-top-style: none;*/
+	color:#444444;
+	width: 50px;
 }

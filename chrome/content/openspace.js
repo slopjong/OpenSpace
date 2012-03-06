@@ -117,6 +117,33 @@ var openspace = {
         //jQuery("#refresh-interval").attr("value");
         var seconds = document.getElementById("refresh-interval").value;
         this.prefs.setIntPref("refresh_interval", seconds);
+    },
+    
+    showPanel: function(){
+
+        var spanel = document.getElementById('openspace-panel');
+        var panel = document.getElementById('thepanel');
+        panel.openPopup(spanel, "before_end", -28, -1, false, false);    
+    },
+    
+    showNotification: function(that){
+        PopupNotifications.show(
+            //gBrowser.selectedBrowser,
+            //document.getElementById("openspace-panel"),
+            //document.getElementById("openspace-status-image"),
+            null,
+            "sample-popup",  
+            "This is a sample popup notification.",  
+            null, /* anchor ID */  
+            {  
+              label: "Do Something",  
+              accessKey: "D",  
+              callback: function() {  
+                alert("Doing something awesome!");  
+              }  
+            },  
+            null  /* secondary action */  
+            );
     }
 };
 

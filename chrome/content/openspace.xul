@@ -9,20 +9,35 @@
 
     <statusbar id="status-bar">
         
-        <panel id="thepanel" onpopupshowing="openspace.initPanel();">
+	<!-- noautohide="true" style="-moz-appearance: none" -->
+        <panel id="thepanel" type="arrow" onpopupshowing="openspace.initPanel();" position="before_end">
             <vbox>
-		<label control="spaces-list" value="Choose your hackerspace"/>
                 <listbox id="spaces-list">
                 </listbox>
-                
-                <label control="refresh-interval" value="Refresh every what seconds?"/>  
-                <textbox id="refresh-interval" value="2" type="number" onchange="openspace.saveRefreshInterval();" min="2" />
+		<hbox>
+			<label style="margin-top:8px; color: #444444;" control="refresh-interval">Refresh interval in seconds:</label>
+			<textbox id="refresh-interval" value="2" type="number" onchange="openspace.saveRefreshInterval();" min="2" />
+		</hbox>                
             </vbox>
 	</panel>
 
-        <statusbarpanel id="openspace-panel" hidden="false" popup="thepanel">
+	<!-- onclick="document.getElementById('thepanel').openPopup(this);" -->
+	<!--popup="thepanel"-->
+        <statusbarpanel id="openspace-panel" hidden="false" onclick="openspace.showPanel();">
             <image id="openspace-status-image" />
         </statusbarpanel>
             
     </statusbar>	
 </overlay>
+
+<!--
+#spaces-list {
+	-moz-appearance: none;
+	background-color: #ffffff;
+	/*background:url('http://openspace.slopjong.de/favicon.gif') no-repeat;*/
+	/*obacity:0.2;*/
+	border:1px #888888 solid;
+	/*background-size:1px 1px;*/
+	color:#444444" id="spaces-list	
+}
+-->
