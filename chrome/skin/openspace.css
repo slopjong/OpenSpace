@@ -23,6 +23,12 @@ scrollbar-arrow-color: #FFFFFF;
 */
 }
 
+#thepanel{
+	/* opacity usable for a fade out effect? */
+	/*opacity: 0.3;*/ /* The panel is not transparent but becomes darker (to black) the lower this number, a bug? */
+	/*-moz-appearance: none;*/
+}
+
 #refresh-interval {
 	-moz-appearance: none;
 	/*
@@ -34,4 +40,29 @@ scrollbar-arrow-color: #FFFFFF;
 	/*border-top-style: none;*/
 	color:#444444;
 	width: 50px;
+}
+
+.popup-notification-icon[popupid="OpenSpace-infopopup"] {
+  list-style-image: url("chrome://openspace/skin/steve.png");
+  width: 46px;
+  height: 100px;
+  margin-left: -12px;
+  margin-bottom: -10px;
+}
+
+.popup-notification[popupid="OpenSpace-infopopup"] {
+  width: 100px;
+}
+
+label {
+	color: #444444;
+}
+
+#add-hackerspace {
+	font-size: 8pt;
+	cursor: pointer;
+}
+
+#add-hackerspace:hover {
+	color: #000000;
 }

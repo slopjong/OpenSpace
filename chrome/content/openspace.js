@@ -8,6 +8,14 @@ var openspace = {
      */
     onLoad: function() {
 
+        // load the notification module used to confirm the selection
+        // of a hackerpsace
+        Components.utils.import('resource://app/modules/PopupNotifications.jsm');
+
+        //this.notify = new PopupNotifications(gBrowser,  
+        //                document.getElementById("notification-popup"),  
+        //                document.getElementById("notification-popup-box")); 
+    
         // load the openspace module
         try{        
             Components.utils.import("resource://openspace/openspace.jsm");
@@ -38,6 +46,7 @@ var openspace = {
            
         // attach event handlers to the panel
         jQuery("#spaces-list").select(this.saveMyspace);
+        jQuery("#add-hackerspace").click(this.addSpace);
         //jQuery("#refresh-interval").change(this.saveRefreshInterval);                
                 
         registerOpenSpaceObserver(this);
@@ -113,6 +122,38 @@ var openspace = {
         // this refers to the listbox since saveMyspace is bound
         // to it as an event handler, so openspace must be used
         openspace.prefs.setCharPref("myspace", myspace);
+
+        // the timeout for hiding the notification panel automatically        
+        //var _timeout = Date.now()+3000;
+        //Components.utils.reportError(_timeout);        
+        
+        var notify = PopupNotifications;
+        var notification =  notify.show(
+            gBrowser.selectedBrowser,  /*browser*/
+            "OpenSpace-infopopup", /*id*/
+            "Your selection '"+ myspace +"' got saved to the preferences.",/*message*/
+            null, /* anchor ID */   
+            null, /* mainAction */
+            null, /* secondaryActions*/
+            {close: true}//{ dismissed: false, timeout: _timeout}/*  /* data */
+        );
+        
+        //document.getElementById("thepanel").setAttribute("fade", "fast");
+        //jQuery("#thepanel").attr("fade","fast");
+        //*
+        setTimeout(function(){
+            notification.remove();
+            //alert(notification.);
+            //Components.utils.reportError(notification["OpenSpace-infopopup"]);
+            /*
+            var o = notification["options"];
+            Components.utils.reportError(o);
+            for(att in o){
+                Components.utils.reportError(att+ " -> "+o[att]);
+            }
+            */
+        }, 3500);
+        //*/
     },
     
     /**
@@ -129,27 +170,15 @@ var openspace = {
 
         var spanel = document.getElementById('openspace-panel');
         var panel = document.getElementById('thepanel');
-        panel.openPopup(spanel, "before_end", -28, -1, false, false);    
+        panel.openPopup(spanel, "before_end", -28, -1, false, false);
     },
     
-    showNotification: function(that){
-        PopupNotifications.show(
-            //gBrowser.selectedBrowser,
-            //document.getElementById("openspace-panel"),
-            //document.getElementById("openspace-status-image"),
-            null,
-            "sample-popup",  
-            "This is a sample popup notification.",  
-            null, /* anchor ID */  
-            {  
-              label: "Do Something",  
-              accessKey: "D",  
-              callback: function() {  
-                alert("Doing something awesome!");  
-              }  
-            },  
-            null  /* secondary action */  
-            );
+    showNotification: function(anchor){
+
+    },
+    
+    addSpace: function(){
+      //alert("test");  
     }
 };
 

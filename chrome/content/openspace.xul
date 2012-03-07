@@ -11,11 +11,12 @@
         
 	<!-- noautohide="true" style="-moz-appearance: none" -->
         <panel id="thepanel" type="arrow" onpopupshowing="openspace.initPanel();" position="before_end">
-            <vbox>
+            <vbox align="stretch">
+		<hbox align="right"><label id="add-hackerspace">Add a hackerspace</label></hbox>
                 <listbox id="spaces-list">
                 </listbox>
 		<hbox>
-			<label style="margin-top:8px; color: #444444;" control="refresh-interval">Refresh interval in seconds:</label>
+			<label style="margin-top:8px;" control="refresh-interval">Refresh interval in seconds:</label>
 			<textbox id="refresh-interval" value="2" type="number" onchange="openspace.saveRefreshInterval();" min="2" />
 		</hbox>                
             </vbox>
