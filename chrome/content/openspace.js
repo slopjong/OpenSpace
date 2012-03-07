@@ -126,7 +126,8 @@ var openspace = {
         // the timeout for hiding the notification panel automatically        
         //var _timeout = Date.now()+3000;
         //Components.utils.reportError(_timeout);        
-        
+    
+                
         var notify = PopupNotifications;
         var notification =  notify.show(
             gBrowser.selectedBrowser,  /*browser*/
@@ -134,9 +135,10 @@ var openspace = {
             "Your selection '"+ myspace +"' got saved to the preferences.",/*message*/
             null, /* anchor ID */   
             null, /* mainAction */
-            null, /* secondaryActions*/
+           null, /* secondaryActions*/
             {close: true}//{ dismissed: false, timeout: _timeout}/*  /* data */
         );
+        
         
         //document.getElementById("thepanel").setAttribute("fade", "fast");
         //jQuery("#thepanel").attr("fade","fast");
@@ -145,13 +147,12 @@ var openspace = {
             notification.remove();
             //alert(notification.);
             //Components.utils.reportError(notification["OpenSpace-infopopup"]);
-            /*
+            //*
             var o = notification["options"];
             Components.utils.reportError(o);
             for(att in o){
                 Components.utils.reportError(att+ " -> "+o[att]);
             }
-            */
         }, 3500);
         //*/
     },
