@@ -66,3 +66,7 @@ label {
 #add-hackerspace:hover {
 	color: #000000;
 }
+
+#add-hackerspace-submit, #space-url-input{
+	display: none;
+}

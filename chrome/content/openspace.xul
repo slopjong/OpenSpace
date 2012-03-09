@@ -12,9 +12,7 @@
 	<!-- noautohide="true" style="-moz-appearance: none" -->
         <panel id="thepanel" type="arrow" onpopupshowing="openspace.initPanel();" position="before_end">
             <vbox align="stretch">
-		<!--
-		<hbox align="right"><label id="add-hackerspace">Add a hackerspace</label></hbox>
-		-->
+		<hbox align="right"><textbox id="space-url-input" value="" /><button id="add-hackerspace-submit" label="Add"/><label id="add-hackerspace">Add a hackerspace</label></hbox>
                 <listbox id="spaces-list">
                 </listbox>
 		<hbox>

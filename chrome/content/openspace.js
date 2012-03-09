@@ -44,9 +44,15 @@ var openspace = {
 			.getService(Components.interfaces.nsIPrefService)
                         .getBranch( "extensions.openspace." );
            
-        // attach event handlers to the panel
+        // attach an event handlers to the panel
         jQuery("#spaces-list").select(this.saveMyspace);
+        
+        //attach an event handler to the 'add' label
         jQuery("#add-hackerspace").click(this.addSpace);
+        
+        // attach an event handler to the submit button
+        jQuery("#add-hackerspace-submit").click(this.submitSpace);
+        
         //jQuery("#refresh-interval").change(this.saveRefreshInterval);                
                 
         registerOpenSpaceObserver(this);
@@ -179,7 +185,20 @@ var openspace = {
     },
     
     addSpace: function(){
-      //alert("test");  
+        // jQuery(...).show() doesn't work
+        jQuery("#add-hackerspace-submit").css("display","block");
+        jQuery("#space-url-input").css("display","block");
+        jQuery("#add-hackerspace").hide();
+        
+    },
+    
+    submitSpace: function(){
+        var url = jQuery("#space-url-input").val();
+        gBrowser.selectedTab = gBrowser.addTab("http://openspace.slopjong.de/#add=" + url);
+        jQuery("#space-url-input").val("");
+        jQuery("#space-url-input").hide();
+        jQuery("#add-hackerspace-submit").hide();
+        jQuery("#add-hackerspace").css("display","block");
     }
 };
 
