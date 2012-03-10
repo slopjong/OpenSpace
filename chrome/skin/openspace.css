@@ -30,16 +30,12 @@ scrollbar-arrow-color: #FFFFFF;
 }
 
 #refresh-interval {
-	-moz-appearance: none;
-	/*
-	background-color: #eeeeee;
-	border-top:50px #888888 solid;	
-	border-top-style: solid;
-	*/
-	/*outline: none;*/
-	/*border-top-style: none;*/
-	color:#444444;
 	width: 50px;
+}
+
+textbox {
+	-moz-appearance: none;
+	color:#444444;
 }
 
 .popup-notification-icon[popupid="OpenSpace-infopopup"] {

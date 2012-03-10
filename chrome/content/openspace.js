@@ -184,6 +184,9 @@ var openspace = {
 
     },
     
+    /**
+     * Hides the link and displays a textbox with a submit button.
+     */
     addSpace: function(){
         // jQuery(...).show() doesn't work
         jQuery("#add-hackerspace-submit").css("display","block");
@@ -192,6 +195,10 @@ var openspace = {
         
     },
     
+    /**
+     * Requests OpenSpaceLint to add the given URL to the space directory
+     * and hides the panel afterwards.
+     */
     submitSpace: function(){
         var url = jQuery("#space-url-input").val();
         gBrowser.selectedTab = gBrowser.addTab("http://openspace.slopjong.de/#add=" + url);
@@ -199,6 +206,7 @@ var openspace = {
         jQuery("#space-url-input").hide();
         jQuery("#add-hackerspace-submit").hide();
         jQuery("#add-hackerspace").css("display","block");
+        document.getElementById("thepanel").hidePopup();
     }
 };
 
