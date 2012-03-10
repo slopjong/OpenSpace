@@ -1,5 +1,10 @@
 
 var openspace = {
+
+    // load the preference manager
+    prefs: Components.classes["@mozilla.org/preferences-service;1"]
+			.getService(Components.interfaces.nsIPrefService)
+                        .getBranch( "extensions.openspace." ),
   
     /**
      * Loads some modules and populates the listbox with spaces known
@@ -38,11 +43,6 @@ var openspace = {
         jQuery.each(directory, function(space, url){
             listbox.appendItem(space);
         });
-
-        // load the preference manager
-        this.prefs = Components.classes["@mozilla.org/preferences-service;1"]
-			.getService(Components.interfaces.nsIPrefService)
-                        .getBranch( "extensions.openspace." );
            
         // attach an event handlers to the panel
         jQuery("#spaces-list").select(this.saveMyspace);
@@ -144,6 +144,7 @@ var openspace = {
            null, /* secondaryActions*/
             {close: true}//{ dismissed: false, timeout: _timeout}/*  /* data */
         );
+        //notification.close = false;
         
         
         //document.getElementById("thepanel").setAttribute("fade", "fast");
