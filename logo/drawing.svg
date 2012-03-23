@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="drawing.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5309">
+      <stop
+         style="stop-color:#dfe592;stop-opacity:1;"
+         offset="0"
+         id="stop5311" />
+      <stop
+         style="stop-color:#dfe592;stop-opacity:0;"
+         offset="1"
+         id="stop5313" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5303"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#dfe592;stop-opacity:1;"
+         offset="0"
+         id="stop5305" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3796"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3798" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3796"
+       id="linearGradient3800"
+       x1="-676.84746"
+       y1="-832.5611"
+       x2="504.52716"
+       y2="-832.5611"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-2.47717,2.0106126)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3796"
+       id="linearGradient3838"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-2.47717,2.0106126)"
+       x1="-676.84746"
+       y1="-832.5611"
+       x2="504.52716"
+       y2="-832.5611" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3796"
+       id="linearGradient3841"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-2.47717,2.0106126)"
+       x1="-676.84746"
+       y1="-832.5611"
+       x2="504.52716"
+       y2="-832.5611" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5309"
+       id="linearGradient5315"
+       x1="-223.44587"
+       y1="-831.42666"
+       x2="49.520305"
+       y2="-831.42666"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.175"
+     inkscape:cx="93.609456"
+     inkscape:cy="1719.8004"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="913"
+     inkscape:window-x="1440"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3007" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer"
+     style="display:inline">
+    <path
+       style="fill:url(#linearGradient5315);fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m -12.47717,-740.62721 c -8.537898,6.13888 -21.864839,-0.44289 -32.562788,1.45137 -15.014667,-1.16322 -30.204273,0.20352 -45.15993,-0.98652 -19.678372,0.10766 -39.432192,0.13058 -59.044102,1.51438 -9.66658,0 -19.33315,0 -28.99972,0 7.48791,-10.55126 7.02096,-19.23455 8.99942,-29.4772 -1.36158,-20.14654 -1.24032,-28.37046 -2.43343,-42.40381 -0.20257,-8.55757 -3.12345,-18.04699 -1.28048,-25.62315 -12.75861,0.39653 -25.26816,-2.49473 -38.06806,-1.99431 -5.58158,-0.1894 -15.87375,0.94395 -5.42065,-2.94751 15.2955,-7.60097 29.12214,-17.77976 42.53979,-28.31724 13.53476,-8.34733 26.32353,-17.78064 38.4869,-28.00852 9.49016,-7.0869 33.30179,-16.94133 41.810276,-25.15849 8.013379,-9.71507 25.215911,13.9321 34.77056,16.10669 13.744084,7.16237 24.840978,13.36185 37.839529,21.81033 5.473445,2.52657 16.6767795,12.4942 33.400145,22.80776 10.857026,6.51374 23.909818,13.40771 34.620015,20.16989 -10.727272,-0.92939 -20.239255,-1.31538 -31.010152,-2.01531 -9.9789597,-0.64836 -25.4811346,4.75105 -25.4811346,4.75105 0,0 1.2096222,37.52344 -0.076613,54.16887 -0.4938454,14.77396 1.2341678,29.88851 -2.2208124,44.29518 1.199725,3.59759 1.149524,1.55615 -0.708763,-0.14357 z"
+       id="path3794"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccccccsccccc"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/logo/openspace.png"
+       inkscape:export-xdpi="17.209999"
+       inkscape:export-ydpi="17.209999" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Text"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-size:50.09518814px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:110.00000238%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Jose Fernandez;-inkscape-font-specification:Jose Fernandez Bold Italic"
+       x="-95.228775"
+       y="-839.88458"
+       id="text3849"
+       sodipodi:linespacing="110%"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/logo/openspace.png"
+       inkscape:export-xdpi="17.209999"
+       inkscape:export-ydpi="17.209999"><tspan
+         sodipodi:role="line"
+         id="tspan3851"
+         x="-95.228775"
+         y="-839.88458"
+         style="font-size:50.09518814px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;font-family:Jose Fernandez;-inkscape-font-specification:Jose Fernandez Bold Italic">Open</tspan><tspan
+         sodipodi:role="line"
+         x="-95.228775"
+         y="-784.77985"
+         id="tspan3853"
+         style="font-size:50.09518814px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;font-family:Jose Fernandez;-inkscape-font-specification:Jose Fernandez Bold Italic">Space</tspan></text>
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <path
+       transform="translate(40,180)"
+       inkscape:transform-center-y="-5"
+       inkscape:transform-center-x="50"
+       sodipodi:type="arc"
+       style="fill:#9ecd99;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path3781"
+       sodipodi:cx="-50"
+       sodipodi:cy="-922.63782"
+       sodipodi:rx="15"
+       sodipodi:ry="15"
+       d="m -35,-922.63782 a 15,15 0 1 1 -30,0 15,15 0 1 1 30,0 z"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/logo/openspace.png"
+       inkscape:export-xdpi="17.209999"
+       inkscape:export-ydpi="17.209999" />
+    <path
+       d="m -35,-922.63782 a 15,15 0 1 1 -30,0 15,15 0 1 1 30,0 z"
+       sodipodi:ry="15"
+       sodipodi:rx="15"
+       sodipodi:cy="-922.63782"
+       sodipodi:cx="-50"
+       id="path3783"
+       style="fill:#fcfe9b;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       inkscape:transform-center-x="50"
+       inkscape:transform-center-y="-5"
+       transform="translate(40,80)"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/logo/openspace.png"
+       inkscape:export-xdpi="17.209999"
+       inkscape:export-ydpi="17.209999" />
+    <path
+       d="m -35,-922.63782 a 15,15 0 1 1 -30,0 15,15 0 1 1 30,0 z"
+       sodipodi:ry="15"
+       sodipodi:rx="15"
+       sodipodi:cy="-922.63782"
+       sodipodi:cx="-50"
+       id="path3787"
+       style="fill:#dfe5e5;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019000000044;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       inkscape:transform-center-x="50"
+       inkscape:transform-center-y="-5"
+       transform="translate(-40,0)"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/logo/openspace.png"
+       inkscape:export-xdpi="17.209999"
+       inkscape:export-ydpi="17.209999" />
+    <path
+       d="m -35,-922.63782 a 15,15 0 1 1 -30,0 15,15 0 1 1 30,0 z"
+       sodipodi:ry="15"
+       sodipodi:rx="15"
+       sodipodi:cy="-922.63782"
+       sodipodi:cx="-50"
+       id="path3789"
+       style="fill:#fc6866;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       inkscape:transform-center-x="50"
+       inkscape:transform-center-y="-5"
+       transform="translate(-40,180)"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/logo/openspace.png"
+       inkscape:export-xdpi="17.209999"
+       inkscape:export-ydpi="17.209999" />
+    <path
+       transform="translate(-120,180)"
+       inkscape:transform-center-y="-5"
+       inkscape:transform-center-x="50"
+       sodipodi:type="arc"
+       style="fill:#9a9acc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path3791"
+       sodipodi:cx="-50"
+       sodipodi:cy="-922.63782"
+       sodipodi:rx="15"
+       sodipodi:ry="15"
+       d="m -35,-922.63782 a 15,15 0 1 1 -30,0 15,15 0 1 1 30,0 z"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/logo/openspace.png"
+       inkscape:export-xdpi="17.209999"
+       inkscape:export-ydpi="17.209999" />
+  </g>
+</svg>
