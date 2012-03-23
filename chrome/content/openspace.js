@@ -15,7 +15,9 @@ var openspace = {
 
         // load the notification module used to confirm the selection
         // of a hackerpsace
-        Components.utils.import('resource://app/modules/PopupNotifications.jsm');
+        // Note: This code module is imported by Firefox chrome windows,
+        //       so this doesn't have to be done oneself in most extensions.
+        // Components.utils.import('resource://app/modules/PopupNotifications.jsm');
 
         //this.notify = new PopupNotifications(gBrowser,  
         //                document.getElementById("notification-popup"),  
