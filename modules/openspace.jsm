@@ -23,6 +23,13 @@ var debugging_mode = false;
 var directory;
 
 /**
+ * Flag of the space status when their JSON got last polled.
+ * True means the space is open and false means the space
+ * is closed.
+ */
+var last_space_status = false;
+
+/**
  * The observers that are listening to the status 
  */
 var observers = [];
@@ -32,6 +39,7 @@ var observers = [];
  */
 function registerOpenSpaceObserver(observer){
     observers.push(observer);
+    observer.setStatus(last_space_status);
 };
 
 // Borrowed from http://ejohn.org/blog/javascript-array-remove/
@@ -139,12 +147,17 @@ try{
 
 /**
  * Notifies all the observers of the current space status.
- * TODO: only set the status if it changed somewhat. It doesn't make sense
- *       to set it all time if nothing changed.
+ * The oberservers can be passed true, false or undefined.
  */
-function notifyObservers(response){
-    for(i=0; i<observers.length; i++)
-        observers[i].setStatus(response);
+function notifyObservers(new_space_status){
+    Components.utils.reportError("notifying the observers");
+    if(last_space_status !== new_space_status){
+        
+        last_space_status = new_space_status;
+        
+        for(i=0; i<observers.length; i++)
+            observers[i].setStatus(new_space_status);
+    }
 }
 
 // openspace's preferences
@@ -159,8 +172,9 @@ var event = {
         req.open("GET", directory[prefs.getCharPref("myspace")], false);
         req.send(null);
     
-        spacejson = JSON.parse(req.responseText);
+        var spacejson = JSON.parse(req.responseText);
         notifyObservers(spacejson.open);
+        
     }catch(e){
         notifyObservers(undefined);
     }
