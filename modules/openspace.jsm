@@ -26,7 +26,20 @@ var space_directory;
  * True means the space is open and false means the space
  * is closed.
  */
-var last_space_status = false;
+var last_space_status = undefined;
+
+/**
+ * A counter used to count fetching attempts after a space status couldn't
+ * be determined because of latency issues caused by ssh tunnelling or another
+ * proxy.
+ */
+var fetch_attempts = 0;
+
+/**
+ * Maximum amount of fetch attempts until the window
+ * gets notified with the undefined status.
+ */
+const MAX_FETCH_ATTEMPTS = 10;
 
 /**
  * The observers that are listening to the status 
@@ -100,6 +113,17 @@ function sortObject(object) {
  
 var req = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
     .createInstance(Components.interfaces.nsIXMLHttpRequest);
+    
+// set the timeout to 4 seconds to avoid latency issues when
+// tunnelling the traffic through ssh or another proxy
+// tip: only firefox 11 and upwards support the timeout attribute
+//req.timeout = 4000;
+
+/**
+ * The timeout to abort the XHR.
+ */
+var timeout = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);  
+const TYPE_ONE_SHOT = Components.interfaces.nsITimer.TYPE_ONE_SHOT;
                         
 // load the space directory   
 try{
@@ -167,21 +191,59 @@ var prefs = Components.classes["@mozilla.org/preferences-service;1"]
 var event = {
   observe: function(subject, topic, data) {
     
-    try{
+    var spacejson = undefined;
+    
+    try
+    {
+        Components.utils.reportError("fetching the json");
+  
+        // init the timeout
+        timeout.init({
+            observe: function(subject, topic){
+                req.abort();
+                Components.utils.reportError("Abort the request");
+        }}, 6000, TYPE_ONE_SHOT);
+
         req.open("GET", space_directory[prefs.getCharPref("myspace")], false);
         req.send(null);
-    
-        var spacejson = JSON.parse(req.responseText);
-        notifyObservers(spacejson.open);
         
-    }catch(e){
-        notifyObservers(undefined);
+        // cancel the timeout
+        timeout.cancel();
+    
+        spacejson = JSON.parse(req.responseText);
+    }
+    catch(e)
+    {
+        Components.utils.reportError("Could not fetch the space api json.");
     }
     
-    // TODO: better to reset the timer delay if the preferences have changed instead
-    //       of setting it all time. there should be something like a preferences observer
-    // set the timer delay to what the user wishes to be
-    timer.delay = 1000 * prefs.getIntPref("refresh_interval");
+    // if something went wrong while fetching the json, just retry.
+    // if the maximum amount got reached 
+    if(spacejson === undefined && ++fetch_attempts < MAX_FETCH_ATTEMPTS)
+    {
+        Components.utils.reportError((fetch_attempts+1)+" retry in 2 seconds");
+        
+        timer.delay = 2000;
+        return;
+    }
+    
+    // if the status is still undefined after 10 attempts then there
+    // are server-side problems and thus the timer cancelled.
+    if(spacejson === undefined)
+    {
+        timer.cancel();
+    }
+    else
+    {
+        fetch_attempts = 0;
+        Components.utils.reportError("Notifying the observer with "+ spacejson.open);
+        notifyObservers(spacejson.open);
+        
+        // TODO: better to reset the timer delay if the preferences have changed instead
+        //       of setting it all time. there should be something like a preferences observer
+        // set the timer delay to what the user wishes to be
+        timer.delay = 1000 * prefs.getIntPref("refresh_interval");
+    }
   }  
 }
 
