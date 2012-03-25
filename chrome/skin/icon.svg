@@ -16,7 +16,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="drawing.svg">
+   sodipodi:docname="icon.svg">
   <defs
      id="defs4">
     <linearGradient
@@ -86,6 +86,26 @@
        x2="49.520305"
        y2="-831.42666"
        gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5309"
+       id="linearGradient3023"
+       gradientUnits="userSpaceOnUse"
+       x1="-223.44587"
+       y1="-831.42666"
+       x2="49.520305"
+       y2="-831.42666"
+       gradientTransform="translate(345.71429,-3.5714286)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5309"
+       id="linearGradient3034"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(345.71429,-3.5714286)"
+       x1="-223.44587"
+       y1="-831.42666"
+       x2="49.520305"
+       y2="-831.42666" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -94,20 +114,26 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.175"
-     inkscape:cx="93.609456"
-     inkscape:cy="1719.8004"
+     inkscape:zoom="0.35"
+     inkscape:cx="504.86637"
+     inkscape:cy="2336.4713"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer4"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="913"
-     inkscape:window-x="1440"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1">
+     inkscape:window-width="1440"
+     inkscape:window-height="853"
+     inkscape:window-x="0"
+     inkscape:window-y="60"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
     <inkscape:grid
        type="xygrid"
        id="grid3007" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="122.22846,2202.1326"
+       id="guide3036" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -123,6 +149,19 @@
   </metadata>
   <g
      inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Layer#1"
+     style="display:inline">
+    <rect
+       style="fill:#dfe592;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;display:inline"
+       id="rect3025"
+       width="244.28572"
+       height="244.28572"
+       x="470.89124"
+       y="-957.20703" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Layer"
      style="display:inline">
@@ -135,6 +174,15 @@
        inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/logo/openspace.png"
        inkscape:export-xdpi="17.209999"
        inkscape:export-ydpi="17.209999" />
+    <path
+       style="fill:url(#linearGradient3034);fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 336.52012,-743.18849 c 0,0 -27.77839,-0.45936 -40.07294,0.17658 -17.93212,0.92755 -35.90707,-0.45236 -53.85527,-0.64826 -23.55665,-0.12971 -45.6279,1.217 -69.14707,2.09377 0.45207,-25.37169 2.54719,-51.06432 2.18867,-76.49552 -0.14162,-10.0463 1.35422,-29.77744 1.35422,-29.77744 0,0 -5.8195,-0.39484 -25.70841,0.35714 -13.33872,0.50432 4.18155,-7.03962 10.36179,-14.42286 32.7215,-26.60882 64.26623,-54.61947 95.514,-82.93238 23.98413,17.76255 49.01578,34.16877 71.40479,53.99109 13.63373,10.79789 28.05808,20.63437 40.29124,33.08857 5.46837,2.74889 13.17844,13.61513 1.14417,11.16012 -10.41401,-1.11071 -22.15509,-1.1817 -34.03316,-0.98602 -1.2012,11.21447 0.93727,25.69999 0.55798,38.12247 -0.26179,17.24159 -0.30838,34.4848 -0.62767,51.72441 -0.70456,2.43231 0.62766,14.54833 0.62766,14.54833 z"
+       id="path3005"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csccscsccccccccc"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/chrome/skin/icon.png"
+       inkscape:export-xdpi="17.96534"
+       inkscape:export-ydpi="17.96534" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -161,6 +209,26 @@
          y="-784.77985"
          id="tspan3853"
          style="font-size:50.09518814px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;font-family:Jose Fernandez;-inkscape-font-specification:Jose Fernandez Bold Italic">Space</tspan></text>
+    <text
+       inkscape:export-ydpi="17.96534"
+       inkscape:export-xdpi="17.96534"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/chrome/skin/icon.png"
+       sodipodi:linespacing="110%"
+       id="text3007"
+       y="-843.45599"
+       x="250.4855"
+       style="font-size:50.09518814px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:110.00000238%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Jose Fernandez;-inkscape-font-specification:Jose Fernandez Bold Italic"
+       xml:space="preserve"><tspan
+         style="font-size:50.09518814px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;font-family:Jose Fernandez;-inkscape-font-specification:Jose Fernandez Bold Italic"
+         y="-843.45599"
+         x="250.4855"
+         id="tspan3009"
+         sodipodi:role="line">Open</tspan><tspan
+         style="font-size:50.09518814px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:110.00000238%;writing-mode:lr-tb;text-anchor:middle;font-family:Jose Fernandez;-inkscape-font-specification:Jose Fernandez Bold Italic"
+         id="tspan3011"
+         y="-788.35126"
+         x="250.4855"
+         sodipodi:role="line">Space</tspan></text>
   </g>
   <g
      inkscape:label="Layer 1"
@@ -204,7 +272,7 @@
        sodipodi:cy="-922.63782"
        sodipodi:cx="-50"
        id="path3787"
-       style="fill:#dfe5e5;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019000000044;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:#dfe5e5;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        sodipodi:type="arc"
        inkscape:transform-center-x="50"
        inkscape:transform-center-y="-5"
@@ -242,5 +310,80 @@
        inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/logo/openspace.png"
        inkscape:export-xdpi="17.209999"
        inkscape:export-ydpi="17.209999" />
+    <path
+       inkscape:export-ydpi="17.96534"
+       inkscape:export-xdpi="17.96534"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/chrome/skin/icon.png"
+       d="m -35,-922.63782 a 15,15 0 1 1 -30,0 15,15 0 1 1 30,0 z"
+       sodipodi:ry="15"
+       sodipodi:rx="15"
+       sodipodi:cy="-922.63782"
+       sodipodi:cx="-50"
+       id="path3013"
+       style="fill:#9ecd99;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       inkscape:transform-center-x="50"
+       inkscape:transform-center-y="-5"
+       transform="translate(385.71429,176.42857)" />
+    <path
+       inkscape:export-ydpi="17.96534"
+       inkscape:export-xdpi="17.96534"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/chrome/skin/icon.png"
+       transform="translate(385.71429,76.428571)"
+       inkscape:transform-center-y="-5"
+       inkscape:transform-center-x="50"
+       sodipodi:type="arc"
+       style="fill:#fcfe9b;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path3015"
+       sodipodi:cx="-50"
+       sodipodi:cy="-922.63782"
+       sodipodi:rx="15"
+       sodipodi:ry="15"
+       d="m -35,-922.63782 a 15,15 0 1 1 -30,0 15,15 0 1 1 30,0 z" />
+    <path
+       inkscape:export-ydpi="17.96534"
+       inkscape:export-xdpi="17.96534"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/chrome/skin/icon.png"
+       transform="translate(307.22952,-19.733869)"
+       inkscape:transform-center-y="-5"
+       inkscape:transform-center-x="50"
+       sodipodi:type="arc"
+       style="fill:#dfe5e5;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path3017"
+       sodipodi:cx="-50"
+       sodipodi:cy="-922.63782"
+       sodipodi:rx="15"
+       sodipodi:ry="15"
+       d="m -35,-922.63782 a 15,15 0 1 1 -30,0 15,15 0 1 1 30,0 z" />
+    <path
+       inkscape:export-ydpi="17.96534"
+       inkscape:export-xdpi="17.96534"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/chrome/skin/icon.png"
+       transform="translate(305.71429,176.42857)"
+       inkscape:transform-center-y="-5"
+       inkscape:transform-center-x="50"
+       sodipodi:type="arc"
+       style="fill:#fc6866;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path3019"
+       sodipodi:cx="-50"
+       sodipodi:cy="-922.63782"
+       sodipodi:rx="15"
+       sodipodi:ry="15"
+       d="m -35,-922.63782 a 15,15 0 1 1 -30,0 15,15 0 1 1 30,0 z" />
+    <path
+       inkscape:export-ydpi="17.96534"
+       inkscape:export-xdpi="17.96534"
+       inkscape:export-filename="/home/slopjong/workspaces/firefox/openspace@slopjong.de/chrome/skin/icon.png"
+       d="m -35,-922.63782 a 15,15 0 1 1 -30,0 15,15 0 1 1 30,0 z"
+       sodipodi:ry="15"
+       sodipodi:rx="15"
+       sodipodi:cy="-922.63782"
+       sodipodi:cx="-50"
+       id="path3021"
+       style="fill:#9a9acc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4.30000019;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc"
+       inkscape:transform-center-x="50"
+       inkscape:transform-center-y="-5"
+       transform="translate(225.71429,176.42857)" />
   </g>
 </svg>
