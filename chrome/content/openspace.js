@@ -109,56 +109,53 @@ var openspace = {
     
     /**
      * Initialize the panel with the space and refresh interval according to the user's configuration.
+     * The initialization code is run once per window and after the panel has been displayed the
+     * first time.
      */
     initPanel: function(){
     
-        Components.utils.reportError("Initializing the panel");
-    
-        // select the user's hackerspace
-	var myspace = this.prefs.getCharPref("myspace");
-        Components.utils.reportError("Saved space is"+ myspace);
-        
-	var list = document.getElementById("spaces-list");
-        jQuery.each(list.childNodes, function(index,item){
-            Components.utils.reportError("Iterating over "+ item.label);
-            if(myspace === item.label){
-                list.selectItem(item);
-                Components.utils.reportError("Selected the item");
-            }
-        });
-         
-        var refresh_interval = this.prefs.getIntPref("refresh_interval");
-	document.getElementById("refresh-interval").value = refresh_interval;
-        
-        // attach an event handlers to the panel
-        jQuery("#spaces-list").select(this.saveMyspace);
-        
-        // the panel is now initialized and flip the flag
-        this.panelInitialized = true;
-    },
-
-    /**
-     * Opens the OpenSpace panel.
-     */
-    showPanel: function(){
-        var spanel = document.getElementById('openspace-panel');
-        var panel = document.getElementById('thepanel');
-        panel.openPopup(spanel, "before_end", -28, -1, false, false);
-    },
-    
-    /**
-     * The event handler executed when the panel is displayed.
-     */
-    onPanelShowing: function(){
-        
         // The panel must be first shown before it can be initialized.
         // There was big trouble when trying to initialize the panel
         // in the onLoad method. The space saved in the prefence should
         // be preselected but preselecting it before first shown didn't
         // work.
-        this.showPanel();
-        if(! this.panelInitialized)
-            this.initPanel();
+
+        if(! this.panelInitialized) {
+    
+            //Components.utils.reportError("Initializing the panel");
+    
+            // select the user's hackerspace
+            var myspace = this.prefs.getCharPref("myspace");
+            //Components.utils.reportError("Saved space is"+ myspace);
+            
+            var list = document.getElementById("spaces-list");
+            jQuery.each(list.childNodes, function(index,item){
+                Components.utils.reportError("Iterating over "+ item.label);
+                if(myspace === item.label){
+                    list.selectItem(item);
+                    //Components.utils.reportError("Selected the item");
+                }
+            });
+             
+            var refresh_interval = this.prefs.getIntPref("refresh_interval");
+            document.getElementById("refresh-interval").value = refresh_interval;
+            
+            // attach an event handlers to the panel
+            jQuery("#spaces-list").select(this.saveMyspace);
+            
+            // the panel is now initialized and flip the flag
+            this.panelInitialized = true;
+        }
+    },
+
+    /**
+     * Shows the OpenSpace panel. The panel appears when the user clicks
+     * on the statusbar panel.
+     */
+    showPanel: function(){
+        var spanel = document.getElementById('openspace-panel');
+        var panel = document.getElementById('thepanel');
+        panel.openPopup(spanel, "before_end", -28, -1, false, false);
     },
     
     /**

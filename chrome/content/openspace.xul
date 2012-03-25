@@ -10,7 +10,7 @@
     <statusbar id="status-bar">
         
 	<!-- noautohide="true" style="-moz-appearance: none" -->
-        <panel id="thepanel" type="arrow" onpopupshowing="openspace.onPanelShowing();" position="before_end">
+        <panel id="thepanel" type="arrow" position="before_end" onpopupshowing="openspace.initPanel();">
             <vbox align="stretch">
 		<hbox align="right"><textbox id="space-url-input" value="Enter a URL" onclick="this.value=''" /><button id="add-hackerspace-submit" label="Add"/><label id="add-hackerspace">Add a hackerspace</label></hbox>
                 <listbox id="spaces-list">
@@ -22,7 +22,6 @@
             </vbox>
 	</panel>
 
-	<!-- onclick="document.getElementById('thepanel').openPopup(this);" -->
 	<!--popup="thepanel"-->
         <statusbarpanel id="openspace-panel" hidden="false" onclick="openspace.showPanel();">
             <image id="openspace-status-image" />
@@ -30,15 +29,3 @@
             
     </statusbar>	
 </overlay>
-
-<!--
-#spaces-list {
-	-moz-appearance: none;
-	background-color: #ffffff;
-	/*background:url('http://openspace.slopjong.de/favicon.gif') no-repeat;*/
-	/*obacity:0.2;*/
-	border:1px #888888 solid;
-	/*background-size:1px 1px;*/
-	color:#444444" id="spaces-list	
-}
--->
