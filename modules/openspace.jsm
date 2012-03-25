@@ -12,6 +12,11 @@
 var EXPORTED_SYMBOLS = ["directory","registerOpenSpaceObserver","unregisterOpenSpaceObserver"];
 
 /**
+ * In the debugging mode the space directory is not retrieved from the web server but is locally hard-coded.
+ */
+var debugging_mode = false;
+
+/**
  * The directory of known hackerspaces which will be loaded
  * from http://openspace.slopjong.de
  */
@@ -91,11 +96,42 @@ var req = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
                         
 // load the space directory   
 try{
-    req.open("GET", "http://openspace.slopjong.de/directory.json", false);
-    req.send(null);
-    
-    directory = JSON.parse(req.responseText);
-    directory = sortObject(directory);
+    if(debugging_mode)
+    {
+        directory =
+        {
+            "ACKspace": "https://ackspace.nl/status.php",
+            "Beta-Space": "http://status.kreativitaet-trifft-technik.de/status.json",
+            "Bitlair": "https://bitlair.nl/statejson.php",
+            "Fabelier": "http://status.fabelier.org/status.json",
+            "Frack": "http://frack.nl/spacestate/?api",
+            "Garoa Hacker Clube": "https://garoahc.appspot.com/status",
+            "HeatSync Labs": "http://intranet.heatsynclabs.org/~access/cgi-bin/spaceapi.rb",
+            "Hickerspace": "http://hickerspace.org/api/info/",
+            "Kwartzlab MakerSpace": "http://at.kwartzlab.ca/spaceapi/index.php",
+            "Makers Local 256": "https://256.makerslocal.org/status.json",
+            "MidsouthMakers": "http://midsouthmakers.org/spaceapi/",
+            "miLKlabs": "http://status.mlkl.bz/json",
+            "Milwaukee Makerspace": "http://apps.2xlnetworks.net/milwaukeemakerspace/",
+            "Noisebridge": "http://api.noisebridge.net/spaceapi/",
+            "Pumping Station: One": "http://space.pumpingstationone.org:8000/spaceapi/ps1",
+            "RaumZeitLabor": "http://openspace.slopjong.de/raumzeitlabor.json",
+            "RevSpace": "https://revspace.nl/status/status.php",
+            "Shackspace": "http://openspace.slopjong.de/shackspace.json",
+            "Syn2cat": "http://www.hackerspace.lu/od/",
+            "Tetalab": "http://status.tetalab.org/status.json",
+            "TkkrLab": "http://tkkrlab.nl/statejson.php",
+            "TOG": "http://tog.ie/cgi-bin/space",
+            "Void Warranties": "http://we.voidwarranties.be/SpaceAPI/"
+        }
+    } else
+    {
+        req.open("GET", "http://openspace.slopjong.de/directory.json", false);
+        req.send(null);
+        
+        directory = JSON.parse(req.responseText);
+        directory = sortObject(directory);
+    }
     
 }catch(e){
     Components.utils.reportError("Could not load the space directory");
