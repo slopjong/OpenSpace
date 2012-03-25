@@ -7,9 +7,8 @@
 
 /**
  * The symbols made public to the scope this module is loaded to.
- * TODO: 'directory' should be renamed to openSpaceDirectory to avoid name conflicts.
  */
-var EXPORTED_SYMBOLS = ["directory","registerOpenSpaceObserver","unregisterOpenSpaceObserver"];
+var EXPORTED_SYMBOLS = ["space_directory","registerOpenSpaceObserver","unregisterOpenSpaceObserver"];
 
 /**
  * In the debugging mode the space directory is not retrieved from the web server but is locally hard-coded.
@@ -20,7 +19,7 @@ var debugging_mode = false;
  * The directory of known hackerspaces which will be loaded
  * from http://openspace.slopjong.de
  */
-var directory;
+var space_directory;
 
 /**
  * Flag of the space status when their JSON got last polled.
@@ -106,7 +105,7 @@ var req = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
 try{
     if(debugging_mode)
     {
-        directory =
+        space_directory =
         {
             "ACKspace": "https://ackspace.nl/status.php",
             "Beta-Space": "http://status.kreativitaet-trifft-technik.de/status.json",
@@ -137,8 +136,8 @@ try{
         req.open("GET", "http://openspace.slopjong.de/directory.json", false);
         req.send(null);
         
-        directory = JSON.parse(req.responseText);
-        directory = sortObject(directory);
+        space_directory = JSON.parse(req.responseText);
+        space_directory = sortObject(space_directory);
     }
     
 }catch(e){
@@ -169,7 +168,7 @@ var event = {
   observe: function(subject, topic, data) {
     
     try{
-        req.open("GET", directory[prefs.getCharPref("myspace")], false);
+        req.open("GET", space_directory[prefs.getCharPref("myspace")], false);
         req.send(null);
     
         var spacejson = JSON.parse(req.responseText);

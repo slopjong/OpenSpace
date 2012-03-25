@@ -42,7 +42,7 @@ var openspace = {
         
         // populate the listbox with known supported hackerspaces
         var listbox = document.getElementById("spaces-list");     
-        jQuery.each(directory, function(space, url){
+        jQuery.each(space_directory, function(space, url){
             listbox.appendItem(space);
         });
         
