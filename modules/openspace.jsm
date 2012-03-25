@@ -229,7 +229,7 @@ var event = {
     
     // if the status is still undefined after 10 attempts then there
     // are server-side problems and thus the timer cancelled.
-    if(spacejson === undefined)
+    if(spacejson === undefined && fetch_attempts == MAX_FETCH_ATTEMPTS)
     {
         timer.cancel();
     }
