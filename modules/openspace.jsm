@@ -11,6 +11,13 @@
 var EXPORTED_SYMBOLS = ["space_directory","registerOpenSpaceObserver","unregisterOpenSpaceObserver"];
 
 /**
+ * Some aliases (introduced very late, when the add-on was alsmost finished)
+ */
+var Cc = Components.classes;
+var Ci = Components.interfaces;
+var Cu = Components.utils;
+
+/**
  * In the debugging mode the space directory is not retrieved from the web server but is locally hard-coded.
  */
 var debugging_mode = false;
@@ -189,9 +196,30 @@ function notifyObservers(new_space_status, force){
     }
 }
 
+Cu.reportError("before prefs");
+
 // openspace's preferences
 var prefs = Components.classes["@mozilla.org/preferences-service;1"]
     .getService(Components.interfaces.nsIPrefService).getBranch( "extensions.openspace." );
+
+Cu.reportError("prefs instantiated");
+Cu.reportError(prefs.resetBranch);
+
+// if the datatype of the myspace preference is an integer (used in version 0.1)
+// then delete the branch and use the defaults
+var type = prefs.getPrefType("myspace");
+if(type === Ci.nsIPrefBranch.PREF_INT){
+    try{
+        let application =  
+            Cc["@mozilla.org/fuel/application;1"].getService(Ci.fuelIApplication);  
+            
+        application.prefs.get("extensions.openspace.myspace").delete();
+    }
+    catch(e){
+        Cu.reportError(e.message);
+    } 
+}
+
 
 var prefMySpace = prefs.getCharPref("myspace");
 Components.utils.reportError(prefMySpace);
