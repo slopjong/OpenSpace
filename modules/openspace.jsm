@@ -57,6 +57,11 @@ var observers = [];
  * Register an observer listening to the space status.
  */
 function registerOpenSpaceObserver(observer){
+    
+    // initialize the timer if the observers list is empty
+    if(observers.length == 0)
+        refresh_timer.init();
+        
     observers.push(observer);
     observer.setStatus(last_space_status);
 };
@@ -84,6 +89,12 @@ function unregisterOpenSpaceObserver(observer){
     //Components.utils.reportError(observers.length);
     Array.remove(observers,i);
     //Components.utils.reportError(observers.length);
+    
+    // stop the timer if the observers list is empty becuase the timer
+    // could stay alive if the error console is open with all other
+    // windows closed    
+    if(observers.length == 0)
+        timer.cancel();
 };
 
 /**
@@ -303,7 +314,6 @@ var refresh_timer = {
         timer.cancel();
         timer.init(event, 1, TYPE_REPEATING_SLACK);
     }}
-refresh_timer.init();
 
 /*****************************************************************************************
  * Now initialize the preference manager observer to keep track of any preference changes.
