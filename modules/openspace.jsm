@@ -117,7 +117,7 @@ var req = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
 // set the timeout to 4 seconds to avoid latency issues when
 // tunnelling the traffic through ssh or another proxy
 // tip: only firefox 11 and upwards support the timeout attribute
-//req.timeout = 4000;
+//req.timeout = 6000;
 
 /**
  * The timeout to abort the XHR.
@@ -187,6 +187,11 @@ function notifyObservers(new_space_status){
 var prefs = Components.classes["@mozilla.org/preferences-service;1"]
     .getService(Components.interfaces.nsIPrefService).getBranch( "extensions.openspace." );
 
+var prefMySpace = prefs.getCharPref("myspace");
+Components.utils.reportError(prefMySpace);
+var prefRefreshInterval = prefs.getIntPref("refresh_interval");
+Components.utils.reportError(prefRefreshInterval);
+
 // setup the timer and its handler
 var event = {
   observe: function(subject, topic, data) {
@@ -204,7 +209,7 @@ var event = {
                 Components.utils.reportError("Abort the request");
         }}, 6000, TYPE_ONE_SHOT);
 
-        req.open("GET", space_directory[prefs.getCharPref("myspace")], false);
+        req.open("GET", space_directory[prefMySpace], false);
         req.send(null);
         
         // cancel the timeout
@@ -239,15 +244,104 @@ var event = {
         Components.utils.reportError("Notifying the observer with "+ spacejson.open);
         notifyObservers(spacejson.open);
         
-        // TODO: better to reset the timer delay if the preferences have changed instead
-        //       of setting it all time. there should be something like a preferences observer
         // set the timer delay to what the user wishes to be
-        timer.delay = 1000 * prefs.getIntPref("refresh_interval");
+        timer.delay = 1000 * prefRefreshInterval;
     }
   }  
 }
 
 // initialize the timer
 var timer = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);  
-const TYPE_REPEATING_SLACK = Components.interfaces.nsITimer.TYPE_REPEATING_SLACK;  
-timer.init(event, 100, TYPE_REPEATING_SLACK);
+const TYPE_REPEATING_SLACK = Components.interfaces.nsITimer.TYPE_REPEATING_SLACK;
+var refresh_timer = {
+    init: function(){
+        // cancel the timer before reinitializing it
+        timer.cancel();
+        timer.init(event, 100, TYPE_REPEATING_SLACK);
+    }}
+refresh_timer.init();
+
+/*****************************************************************************************
+ * Now initialize the preference manager observer to keep track of any preference changes.
+ * 
+ * Note: During Gecko 13 development, nsIPrefBranch2 was deprecated, and its methods moved
+ *       to nsIPrefBranch. Calling .QueryInterface(Components.interfaces.nsIPrefBranch2)
+ *       is no longer required, although it still works.
+ *       
+ * See: https://developer.mozilla.org/en/Code_snippets/Preferences
+ */
+
+
+/**
+ * @constructor
+ *
+ * @param {string} branch_name
+ * @param {Function} callback must have the following arguments:
+ *   branch, pref_leaf_name
+ */
+function PrefListener(branch_name, callback) {
+  // Keeping a reference to the observed preference branch or it will get
+  // garbage collected.
+  var prefService = Components.classes["@mozilla.org/preferences-service;1"]
+    .getService(Components.interfaces.nsIPrefService);
+  this._branch = prefService.getBranch(branch_name);
+  this._branch.QueryInterface(Components.interfaces.nsIPrefBranch2);
+  this._callback = callback;
+}
+
+PrefListener.prototype.observe = function(subject, topic, data) {
+  if (topic == 'nsPref:changed')
+    this._callback(this._branch, data);
+};
+
+/**
+ * @param {boolean=} trigger if true triggers the registered function
+ *   on registration, that is, when this method is called.
+ */
+PrefListener.prototype.register = function(trigger) {
+  this._branch.addObserver('', this, false);
+  if (trigger) {
+    let that = this;
+    this._branch.getChildList('', {}).
+      forEach(function (pref_leaf_name)
+        { that._callback(that._branch, pref_leaf_name); });
+  }
+};
+
+PrefListener.prototype.unregister = function() {
+  if (this._branch)
+    this._branch.removeObserver('', this);
+};
+
+var myListener = new PrefListener("extensions.openspace.",
+                    function(branch, name, value) {
+                        switch (name) {
+                            case "myspace":
+                                prefMySpace = prefs.getCharPref("myspace");
+                                
+                                // set the status as undefined, otherwise a door status could
+                                // be displayed as open or closed even if the actual status
+                                // of the selected space couldn't yet be determined.
+                                //
+                                // TODO: a minor hack is required here to notify the observers
+                                //       of the 'undefined' status, this hack is required because
+                                //       notifyObservers compares last_space_status with the passed
+                                //       argument and it can happen that both are equal and thus
+                                //       nothing happens then
+                                last_space_status = false;
+                                notifyObservers(undefined);
+                                last_space_status = undefined;
+                                
+                                // reinitialize the timer
+                                refresh_timer.init();
+                                Components.utils.reportError("myspace pref has got changed");
+                                break;
+                            
+                            case "refresh_interval":
+                                prefRefreshInterval = prefs.getIntPref("refresh_interval");
+                                Components.utils.reportError("refresh-interval pref has got changed");
+                                break;
+                        }
+                    });
+
+myListener.register(true);
