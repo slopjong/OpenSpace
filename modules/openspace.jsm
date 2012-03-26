@@ -340,8 +340,6 @@ var myListener = new PrefListener("extensions.openspace.",
                                 // of the selected space couldn't yet be determined.
                                 last_space_status = undefined;
                                 
-                                // reinitialize the timer
-                                refresh_timer.init();
                                 Components.utils.reportError("myspace pref has got changed");
                                 break;
                             
@@ -350,6 +348,9 @@ var myListener = new PrefListener("extensions.openspace.",
                                 Components.utils.reportError("refresh-interval pref has got changed");
                                 break;
                         }
+                        
+                        // reinitialize the timer
+                        refresh_timer.init();
                     });
 
 myListener.register(true);
