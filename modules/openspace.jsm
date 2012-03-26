@@ -229,7 +229,7 @@ var event = {
     }
     
     // if something went wrong while fetching the json, just retry.
-    // if the maximum amount got reached 
+    // if the maximum amount got reached, give up.
     if(spacejson === undefined && ++fetch_attempts < MAX_FETCH_ATTEMPTS)
     {         
         Components.utils.reportError((fetch_attempts+1)+" retry in 2 seconds");
