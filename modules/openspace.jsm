@@ -172,9 +172,15 @@ try{
  * Notifies all the observers of the current space status.
  * The oberservers can be passed true, false or undefined.
  */
-function notifyObservers(new_space_status){
+function notifyObservers(new_space_status, force){
+    
+    if(typeof force === "undefined")
+        force = false;
+    
+    Components.utils.reportError(force);
+    
     Components.utils.reportError("notifying the observers");
-    if(last_space_status !== new_space_status){
+    if( (last_space_status !== new_space_status) || force){
         
         last_space_status = new_space_status;
         
@@ -207,7 +213,7 @@ var event = {
             observe: function(subject, topic){
                 req.abort();
                 Components.utils.reportError("Abort the request");
-        }}, 6000, TYPE_ONE_SHOT);
+        }}, 3000, TYPE_ONE_SHOT);
 
         req.open("GET", space_directory[prefMySpace], false);
         req.send(null);
@@ -225,15 +231,25 @@ var event = {
     // if something went wrong while fetching the json, just retry.
     // if the maximum amount got reached 
     if(spacejson === undefined && ++fetch_attempts < MAX_FETCH_ATTEMPTS)
-    {
+    {         
         Components.utils.reportError((fetch_attempts+1)+" retry in 2 seconds");
         
-        timer.delay = 2000;
+        // After three attempts the server is considered to malfunction
+        // and thus the observers get notified with a 'undefined' message.
+        // The status 'undefined' could also mean that there is a latency
+        // issue caused by ssh tunnelling or another proxy.
+        if(fetch_attempts == 3)
+            notifyObservers(undefined, true);
+        
+        // synchronous ajax is used with a timeout of 3 seconds
+        // to set the delay to 1 milisecond is no problem
+        timer.delay = 1;
         return;
     }
     
     // if the status is still undefined after 10 attempts then there
-    // are server-side problems and thus the timer cancelled.
+    // are definitely server-side problems and thus the timer will
+    // be cancelled.
     if(spacejson === undefined && fetch_attempts == MAX_FETCH_ATTEMPTS)
     {
         timer.cancel();
@@ -257,7 +273,7 @@ var refresh_timer = {
     init: function(){
         // cancel the timer before reinitializing it
         timer.cancel();
-        timer.init(event, 100, TYPE_REPEATING_SLACK);
+        timer.init(event, 1, TYPE_REPEATING_SLACK);
     }}
 refresh_timer.init();
 
@@ -319,17 +335,9 @@ var myListener = new PrefListener("extensions.openspace.",
                             case "myspace":
                                 prefMySpace = prefs.getCharPref("myspace");
                                 
-                                // set the status as undefined, otherwise a door status could
+                                // set the status to undefined, otherwise a door status could
                                 // be displayed as open or closed even if the actual status
                                 // of the selected space couldn't yet be determined.
-                                //
-                                // TODO: a minor hack is required here to notify the observers
-                                //       of the 'undefined' status, this hack is required because
-                                //       notifyObservers compares last_space_status with the passed
-                                //       argument and it can happen that both are equal and thus
-                                //       nothing happens then
-                                last_space_status = false;
-                                notifyObservers(undefined);
                                 last_space_status = undefined;
                                 
                                 // reinitialize the timer
