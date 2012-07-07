@@ -23,8 +23,8 @@
     <em:iconURL>chrome://openspace/skin/icon.png</em:iconURL>
    
     <!-- Front End MetaData -->
-    <em:name>OpenSpace</em:name>
-    <em:description>Displays the door status of known hackerspaces in the Add-on Bar.</em:description>
+    <em:name>Hacker's OpenSpace</em:name>
+    <em:description>Shows the door status of your hackerspace in the Add-on bar.</em:description>
     <em:creator>Romain Schmitz</em:creator>
     <em:homepageURL>http://slopjong.de/</em:homepageURL>
   </Description>      

@@ -1,7 +1,7 @@
 OpenSpace
 =========
 
-OpenSpace is a firefox add-on which shows the door status of a supported hackerspace in your browser.
+OpenSpace is a firefox add-on which shows the door status of a supported hackerspace in your browser. If you prefer the comfortable way visit the [add-on website](https://addons.mozilla.org/en-US/firefox/addon/hackers-openspace/) and use the button to add it to your firefox.
 
 How does it know the status?
 ----------------------------
