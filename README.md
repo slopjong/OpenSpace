@@ -51,9 +51,5 @@ The list grows over time and at the time this text here was written it contained
 How do I add my space to the directory?
 ---------------------------------------------------------
 
- You can add your space directly from the add-on. Click on the status dot in the add-on bar, click on 'Add a hackerspace' and type in the URL of the Space API json. Or alternatively use [OpenSpaceLint](http://openspace.slopjong.de).
+You can add your space directly from the add-on. Click on the status dot in the add-on bar, click on 'Add a hackerspace' and type in the URL of the Space API json. Or alternatively use [OpenSpaceLint](http://openspace.slopjong.de).
 
-Links
------
-
-[Space Directory](http://openspace.slopjong.de/directory.json)
