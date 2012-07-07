@@ -8,5 +8,5 @@
 #cp -R ./* /tmp/openspace
 
 rm openspace@slopjong.de.xpi*
-zip -r openspace@slopjong.de.xpi chrome modules chrome.manifest defaults install.rdf
+zip -r openspace@slopjong.de.xpi chrome modules chrome.manifest defaults install.rdf README.md
 zip openspace@slopjong.de.xpi.zip openspace@slopjong.de.xpi
