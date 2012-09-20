@@ -12,11 +12,11 @@
 	<!-- noautohide="true" style="-moz-appearance: none" -->
         <panel id="thepanel" type="arrow" position="before_end" onpopupshowing="openspace.initPanel();">
             <vbox align="stretch">
-		<hbox align="right"><textbox id="space-url-input" value="Enter a URL" onclick="this.value=''" /><button id="add-hackerspace-submit" label="Add"/><label id="add-hackerspace">Add a hackerspace</label></hbox>
+		<hbox align="right"><textbox id="space-url-input" value="Enter a URL" onclick="this.value=''" /><button id="add-hackerspace-submit" label="Add"/><label id="add-hackerspace" class="hoslabel">Add a hackerspace</label></hbox>
                 <listbox id="spaces-list">
                 </listbox>
 		<hbox align="right">
-			<label style="margin-top:8px;" control="refresh-interval">Refresh interval in seconds:</label>
+			<label class="hoslabel" style="margin-top:8px;" control="refresh-interval">Refresh interval in seconds:</label>
 			<textbox id="refresh-interval" value="2" type="number" onchange="openspace.saveRefreshInterval();" min="2" />
 		</hbox>                
             </vbox>
